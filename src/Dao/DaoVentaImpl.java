@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,7 +25,34 @@ public class DaoVentaImpl extends Conexion implements IDaoVentas{
 
     @Override
     public boolean Registrar(Venta Venta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         boolean respuesta = false;
+        String Query="";
+         try{
+            this.Conectar();
+            Query="INSERT INTO venta("+ 
+                    "IDTipoVenta ," +
+                    "IDCliente ," +
+                    "IDCartelera ," +
+                    "Monto " +
+                    ") VALUES(?,?,?,?);";
+            PreparedStatement st = this.conextion.prepareStatement(Query);
+            st.setInt(1, Venta.getIDTipoVenta());
+            st.setInt(2, Venta.getIDCliente());
+            st.setInt(3, Venta.getIDCartelera());
+            st.setInt(4, Venta.getMonto());
+            st.execute();
+            respuesta =true;
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null, e,"Venta Registrar",JOptionPane.ERROR_MESSAGE);
+           
+        }finally{
+             try {
+                 this.Desconectar();
+             } catch (SQLException ex) {
+                 JOptionPane.showMessageDialog(null, ex,"Venta Registrar Desconectar",JOptionPane.ERROR_MESSAGE);
+             }
+            return respuesta;
+        }
     }
 
     @Override

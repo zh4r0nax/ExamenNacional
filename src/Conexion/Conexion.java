@@ -63,7 +63,7 @@ public class Conexion implements IConexion{
             conextion = DriverManager.getConnection(DB_Host,DB_User,DB_Pass);
             //System.out.println("Conexión exitosa");
         }catch(Exception ex){
-            throw ex;
+            JOptionPane.showMessageDialog(null, ex,"Conectar",JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -77,7 +77,7 @@ public class Conexion implements IConexion{
                }
            }
         }catch(SQLException e){
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e,"Desconectar",JOptionPane.ERROR_MESSAGE);
         }
         
     }
