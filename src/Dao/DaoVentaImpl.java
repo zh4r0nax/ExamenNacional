@@ -46,11 +46,11 @@ public class DaoVentaImpl extends Conexion implements IDaoVentas{
            JOptionPane.showMessageDialog(null, e,"Venta Registrar",JOptionPane.ERROR_MESSAGE);
            
         }finally{
-             try {
-                 this.Desconectar();
-             } catch (SQLException ex) {
-                 JOptionPane.showMessageDialog(null, ex,"Venta Registrar Desconectar",JOptionPane.ERROR_MESSAGE);
-             }
+            try {
+                this.Desconectar();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex,"Venta Registrar Desconectar",JOptionPane.ERROR_MESSAGE);
+            }
             return respuesta;
         }
     }

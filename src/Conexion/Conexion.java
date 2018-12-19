@@ -30,7 +30,7 @@ public class Conexion implements IConexion{
     //private static final String DB_Pass = "";
 
     public Conexion() {
-        String Ambiente ="Local";
+        String Ambiente ="Universidad";
         ObtenerParametros(Ambiente);
     }
     
@@ -48,7 +48,7 @@ public class Conexion implements IConexion{
                 this.driver= "com.mysql.cj.jdbc.Driver";
                 this.DB_Host = "jdbc:mysql://localhost/examen";
                 this.DB_User = "root";
-                this.DB_Pass = "Desarrollo";
+                this.DB_Pass = "";
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Sistema sin configuracion DB","Conexion",JOptionPane.ERROR_MESSAGE);
